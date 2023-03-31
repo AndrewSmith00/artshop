@@ -4,6 +4,7 @@
         type="text"
         class="search__input"
         placeholder="Поиск по названию картины"
+        v-model="searchQuery"
         onclick="this.placeholder=''"
         onblur="this.placeholder='Поиск по названию картины'"
       />
@@ -12,8 +13,20 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
 export default {
   name: "HeaderSearch",
+  data() {
+    return {
+      searchQuery: '',
+    }
+  },
+  methods: {
+    ...mapMutations(['SET_SEARCH_QUERY']),
+    search() {
+      this.$store.commit('SET_SEARCH_QUERY', this.searchQuery)
+    }
+  }
 };
 </script>
 
@@ -29,7 +42,7 @@ export default {
 
 .search__input {
   height: 48px;
-  width: 25vw;
+  width: 15vw;
   padding: 14px 16px;
   border: 1px solid #e1e1e1;
 }
@@ -42,7 +55,7 @@ export default {
     vertical-align: middle;
     border: 1px solid #403432;
     cursor: pointer;
-    transition: .2s;
+    transition: background-color .2s linear;
     &:hover {
         background-color: #776763;
         border-color: #776763;

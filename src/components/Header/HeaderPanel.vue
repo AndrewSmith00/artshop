@@ -1,19 +1,21 @@
 <template>
-  <div class="header">
+  <header class="header">
     <div class="header__content">
+      <hamburger-menu></hamburger-menu>
       <header-nav></header-nav>
       <header-search></header-search>
     </div>
-  </div>
+  </header>
 </template>
 
 <script>
 import HeaderNav from './HeaderNav.vue';
 import HeaderSearch from './HeaderSearch.vue';
+import HamburgerMenu from './HamburgerMenu.vue';
 
 export default {
   name: "HeaderPanel",
-  components: {HeaderSearch, HeaderNav},
+  components: {HeaderSearch, HeaderNav, HamburgerMenu},
   methods: {
     search() {
       console.log(1);

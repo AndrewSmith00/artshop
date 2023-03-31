@@ -42,4 +42,16 @@ export default {
     }
   }
 }
+
+@media screen and (max-width: 1200px) {
+  .nav__item {
+    padding-right: 20px;
+  }
+}
+
+@media screen and (max-width: 930px) {
+  .header__nav {
+    display: none;
+  }
+}
 </style>
