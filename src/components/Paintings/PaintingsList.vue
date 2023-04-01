@@ -24,6 +24,12 @@ export default {
       return this.GET_FILTERED_PAINTINGS;
     },
   },
+  data() {
+    return {
+      isModalOpen: false,
+      openedPaintingId: null,
+    };
+  },
   created() {
     // this.$store.commit('REINIT_PAINTINGS_LIST')
     this.$store.commit('SET_SEARCH_QUERY', '');
@@ -34,7 +40,7 @@ export default {
 <style lang="scss">
 .paintings {
   width: 80%;
-  margin: auto;
+  margin: 0 auto 100px auto;
 }
 
 .paintings__header {
@@ -47,9 +53,12 @@ export default {
   grid-template-rows: 1fr;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1400px) {
   .paintings__list {
     grid-template-columns: 1fr 1fr;
+  }
+  .paintings {
+    margin-bottom: 350px;
   }
 }
 

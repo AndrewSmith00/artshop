@@ -54,7 +54,7 @@ const getters = {
 const mutations = {
     TOGGLE_IN_BASKET_STATE(state, paintingId) {
         let painting = state.paintings.find(painting => painting.id == paintingId)
-        painting.isInBasket = !painting.isInBasket;
+            painting.isInBasket = !painting.isInBasket;
     },
     SET_SEARCH_QUERY(state, searchQuery) {
         state.searchQuery = searchQuery;

@@ -8,7 +8,7 @@
         onclick="this.placeholder=''"
         onblur="this.placeholder='Поиск по названию картины'"
       />
-      <button type="submit" class="search__button">Найти</button>
+      <button type="submit" class="button">Найти</button>
     </form>
 </template>
 
@@ -45,20 +45,5 @@ export default {
   width: 15vw;
   padding: 14px 16px;
   border: 1px solid #e1e1e1;
-}
-
-.search__button {
-    height: 48px;
-    width: 10vw;
-    background-color: #403432;
-    color: #F4F6F9;
-    vertical-align: middle;
-    border: 1px solid #403432;
-    cursor: pointer;
-    transition: background-color .2s linear;
-    &:hover {
-        background-color: #776763;
-        border-color: #776763;
-    }
 }
 </style>

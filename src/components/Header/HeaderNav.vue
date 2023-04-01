@@ -34,13 +34,6 @@ export default {
 .nav__item {
   display: inline-block;
   padding-right: 40px;
-  a {
-    text-decoration: none;
-    color: inherit;
-    &:hover {
-      color: #251d76;
-    }
-  }
 }
 
 @media screen and (max-width: 1200px) {

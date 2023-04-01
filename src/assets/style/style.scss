@@ -1,15 +1,29 @@
-@import 'normalize-scss';
-@import url('https://fonts.googleapis.com/css?family=Merriweather');
+@import "normalize-scss";
+@import url("https://fonts.googleapis.com/css?family=Merriweather");
 @include normalize();
 
-*, html, body {
+*,
+html,
+body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    font-family: 'Merriweather'
+    font-family: "Merriweather";
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    position: relative;
+}
+
+body::after {
+    content: "";
+    display: block;
+    height: 50px; /* Set same as footer's height */
 }
 
 h1 {
@@ -39,4 +53,41 @@ h5 {
 h6 {
     font-size: 14px;
     font-weight: lighter;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    &:hover {
+        color: #251d76;
+    }
+}
+
+.button {
+    height: 48px;
+    width: 10vw;
+    background-color: #403432;
+    color: #f4f6f9;
+    font-size: 14px;
+    font-weight: bold;
+    vertical-align: middle;
+    border: 1px solid #403432;
+    cursor: pointer;
+    transition: background-color 0.2s linear;
+    &:hover {
+        background-color: #776763;
+        border-color: #776763;
+    }
+    &:disabled {
+        cursor: default;
+    }
+    text-align: center;
+}
+
+.card__button {
+    width: 50%;
+}
+
+.button_inBasket {
+    background-color: #5b3a32;
 }
