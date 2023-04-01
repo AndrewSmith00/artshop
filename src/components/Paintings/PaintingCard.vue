@@ -45,7 +45,7 @@
         <p v-if="painting.isBought">Продана на аукционе</p>
       </section>
     </div>
-    <painting-modal v-show="isModalOpen" @close="closeModal()" :painting="painting"></painting-modal>
+    
   </section>
 </template>
 
