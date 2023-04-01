@@ -1,14 +1,21 @@
 <template>
   <section class="gallery">
     <img
-      v-for="(image, index) in sortedImages"
-      v-bind:key="index"
-      :src="require(`@/assets/img/${image.src}.png`)"
+      :src="require(`@/assets/img/${activeImage.src}.png`)"
+      class="image_big"
       alt=""
-      class="gallery__image"
-      :class="{image_active: image.isActive}"
-      @click="setAsActive(image.id)"
     />
+    <div class="gallery__unactive-images">
+      <img
+        v-for="(image, index) in mutableImages"
+        v-bind:key="index"
+        :src="require(`@/assets/img/${image.src}.png`)"
+        alt=""
+        class="image_small"
+        :class="{ image_active: image.isActive }"
+        @click="setAsActiveByClick(image.id)"
+      />
+    </div>
   </section>
 </template>
 
@@ -17,15 +24,8 @@ export default {
   name: "ImagesGallery",
   props: ["images"],
   computed: {
-    sortedImages() {
-        let sortedImages = [];
-        sortedImages.push(this.mutableImages.find(image => image.isActive == true));
-        for (let index = 0; index < this.mutableImages.length; index++) {
-            if (this.mutableImages[index].isActive == false) {
-                sortedImages.push(this.mutableImages[index]);
-            }
-        }
-        return sortedImages;
+    activeImage() {
+      return this.mutableImages.find((image) => image.isActive == true);
     },
   },
   data() {
@@ -42,23 +42,73 @@ export default {
       }
       return newImages;
     },
-    setAsActive(imageId) {
-        for (let image of this.mutableImages) {
-            image.isActive = false;
-        }
-        this.mutableImages.find(image => image.id == imageId).isActive = true;
-    }
+    setAsActiveByClick(imageId) {
+      for (let image of this.mutableImages) {
+        image.isActive = false;
+      }
+      this.mutableImages.find((image) => image.id == imageId).isActive = true;
+    },
+    setAsActiveByRightArrow() {},
   },
 };
 </script>
 
 <style lang="scss">
-.gallery__image {
-    width: 80px;
-    cursor: pointer;
+.gallery {
+  background-color: #efeeee;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.gallery__unactive-images {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.image_small {
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
+  border: 3px solid #beacac;
+  border-radius: 10px;
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .image_active {
+  border-color: rgb(92, 92, 219);
+}
+
+.image_big {
+  width: 500px;
+  height: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .image_big {
     width: 300px;
+  }
+  .gallery__unactive-images {
+    display: none;
+  }
+  .gallery__content {
+    height: 350px;
+  }
+}
+
+@media screen and (max-width: 610px) {
+  .image_big {
+    width: 200px;
+  }
+  .image_small {
+    width: 40px;
+    height: 40px;
+  }
+  .gallery__content {
+    height: 300px;
+  }
 }
 </style>

@@ -23,7 +23,10 @@
         >
           x
         </button>
-        <images-gellery :images="painting.images"></images-gellery>
+        <article class="modal__content">
+          <images-gellery :images="painting.images"></images-gellery>
+          <painting-description :painting="painting"></painting-description>
+        </article>
       </div>
     </div>
   </transition>
@@ -31,10 +34,11 @@
 
 <script>
 import ImagesGellery from "./ImagesGellery.vue";
+import PaintingDescription from "./PaintingDescription.vue";
 export default {
   name: "PaintingModal",
   props: ["painting"],
-  components: { ImagesGellery },
+  components: { ImagesGellery, PaintingDescription },
   methods: {
     close() {
       this.$emit("close");
@@ -60,6 +64,11 @@ export default {
 .modal {
   background: #ffffff;
   box-shadow: 2px 2px 20px 1px;
+  width: 95vw;
+}
+
+.modal__content {
+  display: flex;
 }
 
 .button_cross {

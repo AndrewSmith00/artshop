@@ -31,7 +31,6 @@ export default {
     };
   },
   created() {
-    // this.$store.commit('REINIT_PAINTINGS_LIST')
     this.$store.commit("SET_SEARCH_QUERY", "");
   },
 };

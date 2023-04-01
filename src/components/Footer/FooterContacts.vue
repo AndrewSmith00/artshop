@@ -30,6 +30,7 @@ export default {
 @media screen and (max-width: 1400px) {
   .footer__contacts {
     flex-direction: column;
+    width: 100%;
   }
   .footer__contact {
     padding-bottom: 15px;
