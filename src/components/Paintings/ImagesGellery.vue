@@ -136,6 +136,7 @@ export default {
 }
 
 .dot {
+  display: none;
   font-size: 50px;
   color: #989898;
   cursor: pointer;
@@ -173,6 +174,9 @@ export default {
   }
   .image_big {
     width: 330px;
+  }
+  .dot {
+    display: inline;
   }
 }
 
