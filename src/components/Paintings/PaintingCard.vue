@@ -2,7 +2,7 @@
   <section class="painting-card__wrapper" @click="openModal()">
     <div class="painting-card" :class="{ card_disabled: painting.isBought }">
       <img
-        :src="require(`@/assets/img/${painting.imgSource}.png`)"
+        :src="require(`@/assets/img/${painting.images[0].src}.png`)"
         :alt="painting.name"
         :title="painting.name"
       />
@@ -45,7 +45,7 @@
         <p v-if="painting.isBought">Продана на аукционе</p>
       </section>
     </div>
-    <painting-modal v-show="isModalOpen" @close="isModalOpen = false" :painting="painting"></painting-modal>
+    <painting-modal v-show="isModalOpen" @close="closeModal()" :painting="painting"></painting-modal>
   </section>
 </template>
 
@@ -75,6 +75,9 @@ export default {
     openModal() {
       this.isModalOpen = true;
     },
+    closeModal() {
+        this.isModalOpen = false;
+    }
   },
 };
 </script>

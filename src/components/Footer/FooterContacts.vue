@@ -6,7 +6,7 @@
     </p>
     <p class="footer__contact">
       <img src="@/assets/img/map.svg" alt="" />
-      <a href="">г. Санкт-Петербург, ул. Ефимова, 3</a>
+      <a href="https://goo.gl/maps/f99aVi1xmmigTiKu5">г. Санкт-Петербург, ул. Ефимова, 3</a>
     </p>
   </section>
 </template>

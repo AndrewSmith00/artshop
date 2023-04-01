@@ -8,7 +8,24 @@ const state = {
             currentPrice: '1 000 000 $',
             isInBasket: false,
             isBought: false,
-            imgSource: 'BirthOfVenus',
+            images: [
+                {
+                    id: 0,
+                    src: 'BirthOfVenus',
+                },
+                {
+                    id: 1,
+                    src: 'venus2',
+                },
+                {
+                    id: 2,
+                    src: 'venus3',
+                },
+                {
+                    id: 3,
+                    src: 'venus4',
+                },
+            ],
         },
         {
             id: 1,
@@ -18,7 +35,11 @@ const state = {
             currentPrice: '3 000 000 $',
             isInBasket: false,
             isBought: false,
-            imgSource: 'LastSupper',
+            images: [
+                {
+                    src: 'LastSupper',
+                },
+            ],
         },
         {
             id: 2,
@@ -28,7 +49,11 @@ const state = {
             currentPrice: '5 000 000 $',
             isInBasket: false,
             isBought: false,
-            imgSource: 'CreationOfAdam',
+            images: [
+                {
+                    src: 'CreationOfAdam',
+                }
+            ],
         },
         {
             id: 3,
@@ -38,7 +63,11 @@ const state = {
             currentPrice: null,
             isInBasket: false,
             isBought: true,
-            imgSource: 'AnatomyLesson',
+            images: [
+                {
+                    src: 'AnatomyLesson',
+                }
+            ],
         },
     ],
     searchQuery: '',
@@ -46,21 +75,21 @@ const state = {
 
 const getters = {
     GET_FILTERED_PAINTINGS: (state) => {
-        return state.paintings.filter(painting => 
-            painting.name.toLowerCase().includes(state.searchQuery.toLowerCase()) ||  painting.author.toLowerCase().includes(state.searchQuery.toLowerCase()))
+        return state.paintings.filter(painting =>
+            painting.name.toLowerCase().includes(state.searchQuery.toLowerCase()) || painting.author.toLowerCase().includes(state.searchQuery.toLowerCase()))
     }
 };
 
 const mutations = {
     TOGGLE_IN_BASKET_STATE(state, paintingId) {
         let painting = state.paintings.find(painting => painting.id == paintingId)
-            painting.isInBasket = !painting.isInBasket;
+        painting.isInBasket = !painting.isInBasket;
     },
     SET_SEARCH_QUERY(state, searchQuery) {
         state.searchQuery = searchQuery;
     },
     REINIT_PAINTINGS_LIST(state) {
-        state.paintings =      [
+        state.paintings = [
             {
                 id: 0,
                 name: 'Рождение Венеры',
@@ -69,7 +98,24 @@ const mutations = {
                 currentPrice: '1 000 000 $',
                 isInBasket: false,
                 isBought: false,
-                imgSource: 'BirthOfVenus',
+                images: [
+                    {
+                        id: 0,
+                        src: 'BirthOfVenus',
+                    },
+                    {
+                        id: 1,
+                        src: 'venus2',
+                    },
+                    {
+                        id: 2,
+                        src: 'venus3',
+                    },
+                    {
+                        id: 3,
+                        src: 'venus4',
+                    },
+                ],
             },
             {
                 id: 1,
@@ -79,7 +125,11 @@ const mutations = {
                 currentPrice: '3 000 000 $',
                 isInBasket: false,
                 isBought: false,
-                imgSource: 'LastSupper',
+                images: [
+                    {
+                        src: 'LastSupper',
+                    }
+                ],
             },
             {
                 id: 2,
@@ -89,7 +139,11 @@ const mutations = {
                 currentPrice: '5 000 000 $',
                 isInBasket: false,
                 isBought: false,
-                imgSource: 'CreationOfAdam',
+                images: [
+                    {
+                        src: 'CreationOfAdam',
+                    }
+                ],
             },
             {
                 id: 3,
@@ -99,7 +153,11 @@ const mutations = {
                 currentPrice: null,
                 isInBasket: false,
                 isBought: true,
-                imgSource: 'AnatomyLesson',
+                images: [
+                    {
+                        src: 'AnatomyLesson',
+                    }
+                ],
             },
         ]
     }

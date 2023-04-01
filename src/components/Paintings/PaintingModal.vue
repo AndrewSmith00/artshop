@@ -5,51 +5,36 @@
       @wheel.prevent
       @touchmove.prevent
       @scroll.prevent
+      @click="close()"
+      @click.stop=""
     >
       <div
-        @click.stop=""
         class="modal"
         role="dialog"
         aria-labelledby="modalTitle"
         aria-describedby="modalDescription"
+        @click.stop=""
       >
-        <header class="modal-header" id="modalTitle">
-          <div class="modal-header__content">
-            <div class="modal__navigation-buttons"></div>
-            <button
-              type="button"
-              class="button_cross"
-              @click="close()"
-              aria-label="Close modal"
-            >
-              x
-            </button>
-          </div>
-        </header>
-
-        <section class="modal-body" id="modalDescription"></section>
-
-        <footer class="modal-footer">
-          <div class="modal-footer__content">
-            <button
-              type="button"
-              class="button"
-              @click="close()"
-              aria-label="Close modal"
-            >
-              Закрыть
-            </button>
-          </div>
-        </footer>
+        <button
+          type="button"
+          class="button_cross"
+          @click="close()"
+          aria-label="Close modal"
+        >
+          x
+        </button>
+        <images-gellery :images="painting.images"></images-gellery>
       </div>
     </div>
   </transition>
 </template>
 
 <script>
+import ImagesGellery from "./ImagesGellery.vue";
 export default {
   name: "PaintingModal",
   props: ["painting"],
+  components: { ImagesGellery },
   methods: {
     close() {
       this.$emit("close");
@@ -74,42 +59,7 @@ export default {
 
 .modal {
   background: #ffffff;
-  font-size: 1.8rem;
   box-shadow: 2px 2px 20px 1px;
-  overflow-x: auto;
-  display: flex;
-  flex-direction: column;
-  width: fit-content;
-}
-
-.modal-header,
-.modal-footer {
-  display: flex;
-  height: 15%;
-}
-.modal-header {
-  padding: 15px;
-  position: relative;
-  border-bottom: 1px solid #eeeeee;
-  color: #4aae9b;
-  justify-content: space-between;
-}
-.modal-header__content {
-  width: 90%;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-}
-
-.modal-footer {
-  padding: 15px 0;
-  border-top: 1px solid #eeeeee;
-}
-.modal-footer__content {
-  width: 100%;
-  display: flex;
-  margin: auto;
-  justify-content: space-between;
 }
 
 .button_cross {
@@ -119,6 +69,8 @@ export default {
   font-weight: bold;
   color: #4aae9b;
   background: transparent;
+  float: right;
+  padding: 5px 8px;
 }
 
 .button_cross:hover {

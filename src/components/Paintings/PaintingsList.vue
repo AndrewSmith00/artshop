@@ -32,8 +32,8 @@ export default {
   },
   created() {
     // this.$store.commit('REINIT_PAINTINGS_LIST')
-    this.$store.commit('SET_SEARCH_QUERY', '');
-  }
+    this.$store.commit("SET_SEARCH_QUERY", "");
+  },
 };
 </script>
 
@@ -63,8 +63,8 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
-    .paintings__list {
-        grid-template-columns: 1fr;
-    }
+  .paintings__list {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
