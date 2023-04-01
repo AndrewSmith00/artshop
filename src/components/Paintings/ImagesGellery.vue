@@ -1,24 +1,26 @@
 <template>
   <section class="gallery">
-
-
+    <div class="image__wrapper">
+      <span class="switch-left" @click="switchLeft()">&#60;</span>
       <img
-      :src="require(`@/assets/img/${activeImage.src}.png`)"
-      class="image_big"
-      alt=""
-    />
-
+        :src="require(`@/assets/img/${activeImage.src}.png`)"
+        class="image_big"
+        alt=""
+      />
+      <span class="switch-right" @click="switchRight()">&#62;</span>
+    </div>
 
     <div class="gallery__unactive-images">
-      <img
-        v-for="(image, index) in mutableImages"
-        v-bind:key="index"
-        :src="require(`@/assets/img/${image.src}.png`)"
-        alt=""
-        class="image_small"
-        :class="{ image_active: image.isActive }"
-        @click="setAsActiveByClick(image.id)"
-      />
+      <div v-for="(image, index) in mutableImages" v-bind:key="index">
+        <img
+          :src="require(`@/assets/img/${image.src}.png`)"
+          alt=""
+          class="image_small"
+          :class="{ image_active: image.isActive }"
+          @click="setAsActiveByClick(image.id)"
+        />
+        <span class="dot" :class="{dot_active: image.isActive}" @click="setAsActiveByClick(image.id)">&#183;</span>
+      </div>
     </div>
   </section>
 </template>
@@ -52,8 +54,27 @@ export default {
       }
       this.mutableImages.find((image) => image.id == imageId).isActive = true;
     },
-    swithRight() {
-
+    switchRight() {
+      let index = this.mutableImages.findIndex(
+        (image) => image.isActive == true
+      );
+      if (index == this.mutableImages.length - 1) {
+        this.mutableImages[0].isActive = true;
+      } else {
+        this.mutableImages[index + 1].isActive = true;
+      }
+      this.mutableImages[index].isActive = false;
+    },
+    switchLeft() {
+      let index = this.mutableImages.findIndex(
+        (image) => image.isActive == true
+      );
+      if (index == 0) {
+        this.mutableImages[this.mutableImages.length - 1].isActive = true;
+      } else {
+        this.mutableImages[index - 1].isActive = true;
+      }
+      this.mutableImages[index].isActive = false;
     },
   },
 };
@@ -96,16 +117,32 @@ export default {
   height: auto;
 }
 
-.switch-left, .switch-right {
+.switch-left,
+.switch-right {
   display: none;
+  cursor: pointer;
+  transition: color 0.2s linear;
+  &:hover {
+    color: #5a17cc;
+  }
 }
 
 .switch-left {
-  padding-right: 5px;
+  padding-right: 3px;
 }
 
 .switch-right {
-  padding-left: 5px;
+  padding-left: 3px;
+}
+
+.dot {
+  font-size: 50px;
+  color: #989898;
+  cursor: pointer;
+}
+
+.dot_active {
+  color: #5a17cc;
 }
 
 @media screen and (max-width: 768px) {
@@ -118,7 +155,7 @@ export default {
   }
 }
 
-@media screen and (max-width: 610px) { 
+@media screen and (max-width: 610px) {
   .gallery {
     height: 300px;
     align-items: center;
@@ -127,14 +164,15 @@ export default {
       vertical-align: middle;
     }
   }
-  .switch-left, .switch-right {
+  .switch-left,
+  .switch-right {
     display: inline;
   }
-  .gallery__unactive-images {
+  .image_small {
     display: none;
   }
   .image_big {
-    width: 360px;
+    width: 330px;
   }
 }
 

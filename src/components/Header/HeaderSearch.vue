@@ -8,7 +8,7 @@
         onclick="this.placeholder=''"
         onblur="this.placeholder='Поиск по названию картины'"
       />
-      <button type="submit" class="button">Найти</button>
+      <button type="submit" class="button search__button">Найти</button>
     </form>
 </template>
 
@@ -45,5 +45,14 @@ export default {
   width: 15vw;
   padding: 14px 16px;
   border: 1px solid #e1e1e1;
+}
+
+@media screen and (max-width: 930px) {
+  .search__input {
+    width: 25vw;
+  }
+  .search__button {
+    width: 10vw;
+  }
 }
 </style>

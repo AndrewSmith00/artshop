@@ -91,3 +91,9 @@ a {
 .button_inBasket {
     background-color: #5b3a32;
 }
+
+@media screen and (max-width: 930px) {
+    .search__button {
+      width: 15vw;
+    }
+  }
