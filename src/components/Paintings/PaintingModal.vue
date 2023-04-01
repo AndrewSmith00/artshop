@@ -2,9 +2,6 @@
   <transition>
     <div
       class="modal-backdrop"
-      @wheel.prevent
-      @touchmove.prevent
-      @scroll.prevent
       @click="close()"
       @click.stop=""
     >
@@ -64,7 +61,7 @@ export default {
 .modal {
   background: #ffffff;
   box-shadow: 2px 2px 20px 1px;
-  width: 95vw;
+  max-width: 95vw;
 }
 
 .modal__content {

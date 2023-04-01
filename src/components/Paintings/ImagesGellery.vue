@@ -57,6 +57,7 @@ export default {
 .gallery {
   background-color: #efeeee;
   padding: 0 20px;
+  height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
