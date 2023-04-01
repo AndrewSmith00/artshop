@@ -1,10 +1,14 @@
 <template>
   <section class="gallery">
-    <img
+
+
+      <img
       :src="require(`@/assets/img/${activeImage.src}.png`)"
       class="image_big"
       alt=""
     />
+
+
     <div class="gallery__unactive-images">
       <img
         v-for="(image, index) in mutableImages"
@@ -48,7 +52,9 @@ export default {
       }
       this.mutableImages.find((image) => image.id == imageId).isActive = true;
     },
-    setAsActiveByRightArrow() {},
+    swithRight() {
+
+    },
   },
 };
 </script>
@@ -61,9 +67,11 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  align-items: center;
 }
 
 .gallery__unactive-images {
+  width: 100%;
   display: flex;
   justify-content: space-evenly;
 }
@@ -88,28 +96,57 @@ export default {
   height: auto;
 }
 
+.switch-left, .switch-right {
+  display: none;
+}
+
+.switch-left {
+  padding-right: 5px;
+}
+
+.switch-right {
+  padding-left: 5px;
+}
+
 @media screen and (max-width: 768px) {
   .image_big {
-    width: 300px;
+    width: 400px;
   }
-  .gallery__unactive-images {
-    display: none;
-  }
+
   .gallery__content {
     height: 350px;
   }
 }
 
-@media screen and (max-width: 610px) {
-  .image_big {
-    width: 200px;
-  }
-  .image_small {
-    width: 40px;
-    height: 40px;
-  }
-  .gallery__content {
+@media screen and (max-width: 610px) { 
+  .gallery {
     height: 300px;
+    align-items: center;
+    justify-content: center;
+    img {
+      vertical-align: middle;
+    }
+  }
+  .switch-left, .switch-right {
+    display: inline;
+  }
+  .gallery__unactive-images {
+    display: none;
+  }
+  .image_big {
+    width: 360px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .image_big {
+    width: 270px;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .image_big {
+    width: 235px;
   }
 }
 </style>

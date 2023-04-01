@@ -63,8 +63,7 @@ export default {
 
 <style lang="scss">
 .painting-description {
-  padding-left: 20px;
-  margin: 50px 0;
+  margin: 50px 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -83,5 +82,14 @@ export default {
 .description {
     font-size: 14px;
     margin-top: 30px;
+}
+
+@media screen and (max-width: 576px) {
+    .description__name {
+        font-size: 16px;
+    }
+    .description {
+        font-size: 14px;
+    }
 }
 </style>

@@ -75,8 +75,8 @@ export default {
   font-weight: bold;
   color: #4aae9b;
   background: transparent;
-  float: right;
   padding: 5px 8px;
+  float: right;
 }
 
 .button_cross:hover {
@@ -89,5 +89,16 @@ export default {
 .modal-fade-enter-active,
 .modal-fade-leave-active {
   transition: opacity 0.05s ease-out;
+}
+
+@media screen and (max-width: 610px) {
+  .modal__content {
+    flex-direction: column;
+  }
+  .button_cross {
+    float: none;
+    width: 100%;
+    text-align: right;
+  }
 }
 </style>
